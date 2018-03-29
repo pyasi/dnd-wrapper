@@ -23,3 +23,12 @@ class DnDBase(object):
 
     def _get(self, path):
         return self._query('GET', path)
+
+    def _set_response_info_to_class_values(self, response={}):
+        """
+
+        """
+        if isinstance(response, dict):
+            for key in response.keys():
+                if not hasattr(self, key) or not callable(getattr(self, key)):
+                    setattr(self, key, response[key])

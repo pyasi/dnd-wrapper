@@ -1,12 +1,13 @@
-from pydnd import Race, AbilityScore, Skill, Proficiency, Languages, Character, Resource
+from pydnd import Race, Character, CharacterEnum
 
 import json
 
-ab = Resource(Character.languages)
+ab = Character(CharacterEnum.languages)
 response = ab.get_all()
-print("{")
-for result in response['results']:
-    print('"{}": {},'.format(result['name'].lower(), result['url'].split('/')[5]))
-print("}")
+# print("{")
+# for result in response['results']:
+#     print('"{}": {},'.format(result['name'].lower(), result['url'].split('/')[5]))
+# print("}")
 
-#print(ab.info_by_name('Flute'))
+type = ab.info_by_id(30, as_object=False)
+print(type)

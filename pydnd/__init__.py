@@ -1,4 +1,4 @@
-from .base import DnDBase, Resource
+from .base import DnDBase
 from .race import Race
-from .character import AbilityScore, Skill, Proficiency, Languages
-from .resource_enums import Character
+from .character import Character, CharacterEnum
+from .resource_dicts import *
