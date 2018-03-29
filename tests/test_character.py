@@ -110,20 +110,20 @@ class CharacterProficienciesTests(unittest.TestCase):
     def setUp(self):
         self.proficiencies = Character(CharacterEnum.proficiencies)
 
-    def test_skills_info_by_id_json(self):
+    def test_proficiencies_info_by_id_json(self):
         response = self.proficiencies.info_by_id(1)
         self.assertIsInstance(response, dict)
 
-    def test_skills_info_by_id_object(self):
+    def test_proficiencies_info_by_id_object(self):
         response = self.proficiencies.info_by_id(1, as_object=True)
         self.assertEqual(response.name, 'Light armor')
         self.assertIsInstance(response, object)
 
-    def test_skills_info_by_name_json(self):
+    def test_proficiencies_info_by_name_json(self):
         response = self.proficiencies.info_by_name('Light armor')
         self.assertIsInstance(response, dict)
 
-    def test_skills_info_by_name_object(self):
+    def test_proficiencies_info_by_name_object(self):
         response = self.proficiencies.info_by_name('Light armor', as_object=True)
         self.assertEqual(response.type, 'Armor')
         self.assertIsInstance(response, object)
@@ -133,7 +133,7 @@ class CharacterProficienciesTests(unittest.TestCase):
         response_two = Character(CharacterEnum.proficiencies).info_by_name('Medium armor', as_object=True)
         self.assertNotEqual(response_one.index, response_two.index)
 
-    def test_skills_get_all(self):
+    def test_proficiencies_get_all(self):
         response = self.proficiencies.get_all()
         self.assertIsInstance(response, dict)
 
@@ -141,14 +141,65 @@ class CharacterProficienciesTests(unittest.TestCase):
         dictionary = self.proficiencies.get_dict_for_character_trait()
         self.assertEqual(dictionary, self.proficieny_dict)
 
-    def test_skills_id_negative_case(self):
+    def test_proficiencies_id_negative_case(self):
         response = self.proficiencies.info_by_id(300)
         self.assertIsNone(response)
 
-    def test_skills_name_negative_case_using_id(self):
+    def test_proficiencies_name_negative_case_using_id(self):
         response = self.proficiencies.info_by_name('NOT_PROFICIENCY')
         self.assertIsNone(response)
 
-    def test_skills_name_negative_case_using_id(self):
+    def test_proficiencies_name_negative_case_using_id(self):
         response = self.proficiencies.info_by_name(300)
+        self.assertIsNone(response)
+
+
+class CharacterAbilityScoreTests(unittest.TestCase):
+
+    from pydnd.resource_dicts import ability_score_dict
+
+    def setUp(self):
+        self.ability_scores = Character(CharacterEnum.ability_score)
+
+    def test_proficiencies_info_by_id_json(self):
+        response = self.ability_scores.info_by_id(1)
+        self.assertIsInstance(response, dict)
+
+    def test_proficiencies_info_by_id_object(self):
+        response = self.ability_scores.info_by_id(1, as_object=True)
+        self.assertEqual(response.name, 'STR')
+        self.assertIsInstance(response, object)
+
+    def test_proficiencies_info_by_name_json(self):
+        response = self.ability_scores.info_by_name('STR')
+        self.assertIsInstance(response, dict)
+
+    def test_proficiencies_info_by_name_object(self):
+        response = self.ability_scores.info_by_name('STR', as_object=True)
+        self.assertEqual(response.full_name, 'Strength')
+        self.assertIsInstance(response, object)
+
+    def test_can_make_multiple_objects(self):
+        response_one = self.ability_scores.info_by_name('STR', as_object=True)
+        response_two = Character(CharacterEnum.ability_score).info_by_name('CHA', as_object=True)
+        self.assertNotEqual(response_one.index, response_two.index)
+
+    def test_proficiencies_get_all(self):
+        response = self.ability_scores.get_all()
+        self.assertIsInstance(response, dict)
+
+    def test_get_dict_for_trait(self):
+        dictionary = self.ability_scores.get_dict_for_character_trait()
+        self.assertEqual(dictionary, self.ability_score_dict)
+
+    def test_proficiencies_id_negative_case(self):
+        response = self.ability_scores.info_by_id(300)
+        self.assertIsNone(response)
+
+    def test_proficiencies_name_negative_case_using_id(self):
+        response = self.ability_scores.info_by_name('NOT_AB')
+        self.assertIsNone(response)
+
+    def test_proficiencies_name_negative_case_using_id(self):
+        response = self.ability_scores.info_by_name(300)
         self.assertIsNone(response)

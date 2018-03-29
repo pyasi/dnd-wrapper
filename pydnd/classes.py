@@ -4,21 +4,24 @@ from enum import Enum
 import logging
 
 
-class ClassesEnum(Enum):
+class ClassEnum(Enum):
     classes = 'classes/'
     subclasses = 'subclasses/'
+
+    #TODO These may be on their own
     #features = 'features/'
     #spellcasting = 'spellcasting/'
     #starting_equipment = 'startingequipment/'
+    #levels = 'levels/'
 
 
-class Classes(DnDBase):
+class Class(DnDBase):
 
     def __init__(self, resource):
-        super(Classes, self).__init__()
+        super(Class, self).__init__()
         self.resource = resource
         self.path = resource.value
-        #self.dict = self.get_dict_for_character_trait()
+        self.dict = self.get_dict_for_character_trait()
 
     def get_all(self):
         response = self._get(self.path)
@@ -45,8 +48,8 @@ class Classes(DnDBase):
 
     def get_dict_for_character_trait(self):
 
-        if self.resource == ClassesEnum.classes:
+        if self.resource == ClassEnum.classes:
             return classes_dict
-        elif self.resource == ClassesEnum.subclasses:
+        elif self.resource == ClassEnum.subclasses:
             return subclasses_dict
 
