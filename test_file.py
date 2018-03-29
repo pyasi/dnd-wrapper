@@ -9,5 +9,5 @@ response = ab.get_all()
 #     print('"{}": {},'.format(result['name'].lower(), result['url'].split('/')[5]))
 # print("}")
 
-type = ab.info_by_id(30, as_object=False)
+type = ab.info_by_name('common', as_object=True)
 print(type)

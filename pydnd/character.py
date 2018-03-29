@@ -12,6 +12,7 @@ class CharacterEnum(Enum):
 
 
 class Character(DnDBase):
+
     def __init__(self, resource):
         super(Character, self).__init__()
         self.resource = resource
