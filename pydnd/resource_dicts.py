@@ -178,3 +178,33 @@ language_dict = {
         "sylvan": 15,
         "undercommon": 16,
     }
+
+classes_dict = {
+"barbarian": 1,
+"bard": 2,
+"cleric": 3,
+"druid": 4,
+"fighter": 5,
+"monk": 6,
+"paladin": 7,
+"ranger": 8,
+"rogue": 9,
+"sorcerer": 10,
+"warlock": 11,
+"wizard": 12
+}
+
+subclasses_dict = {
+"berserker": 1,
+"lore": 2,
+"life": 3,
+"land": 4,
+"champion": 5,
+"open hand": 6,
+"devotion": 7,
+"hunter": 8,
+"thief": 9,
+"draconic": 10,
+"fiend": 11,
+"evocation": 12
+}

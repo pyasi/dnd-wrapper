@@ -5,11 +5,12 @@ import logging
 
 
 class ClassesEnum(Enum):
-    classes = 'classes'
-    subclasses = 'subclasses'
-    features = 'features'
-    spellcasting = 'spellcasting'
-    starting_equipment = 'starting-equipment'
+    classes = 'classes/'
+    subclasses = 'subclasses/'
+    #features = 'features/'
+    #spellcasting = 'spellcasting/'
+    #starting_equipment = 'startingequipment/'
+
 
 class Classes(DnDBase):
 
@@ -17,7 +18,7 @@ class Classes(DnDBase):
         super(Classes, self).__init__()
         self.resource = resource
         self.path = resource.value
-        self.dict = self.get_dict_for_character_trait()
+        #self.dict = self.get_dict_for_character_trait()
 
     def get_all(self):
         response = self._get(self.path)
@@ -44,11 +45,8 @@ class Classes(DnDBase):
 
     def get_dict_for_character_trait(self):
 
-        if self.resource == CharacterEnum.ability_score:
-            return ability_score_dict
-        elif self.resource == CharacterEnum.skills:
-            return skill_dict
-        elif self.resource == CharacterEnum.proficiencies:
-            return proficieny_dict
-        elif self.resource == CharacterEnum.languages:
-            return language_dict
+        if self.resource == ClassesEnum.classes:
+            return classes_dict
+        elif self.resource == ClassesEnum.subclasses:
+            return subclasses_dict
+
